@@ -32,8 +32,10 @@ jobs:
           password: ${{ secrets.dockerhub_token }}
       - name: Push image with commit SHA
         run: docker push ${{ inputs.image_name }}:${{ github.sha }}
+      - name: Tag image with tag
+        if: "startsWith(github.ref, 'refs/tags/')"
+        run: docker tag ${{ inputs.image_name }}:${{ github.sha }} ${{ inputs.image_name }}:${{ github.ref_name }}
       - name: Push image with tag
         if: "startsWith(github.ref, 'refs/tags/')"
-        run: docker tag ${{ inputs.image_name }}:${{ github.sha }} ${{ inputs.image_name }}:${{ github.ref_name }} && \
-             docker push ${{ inputs.image_name }}:${{ github.ref_name }}
+        run: docker push ${{ inputs.image_name }}:${{ github.ref_name }}
         
