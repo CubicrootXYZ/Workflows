@@ -6,6 +6,11 @@ on:
         default: "./"
         type: string
 
+permissions:
+  # Required by golangci job to write annotations to the merge request.
+  contents: read
+  checks: write
+
 jobs:
   golangci:
     runs-on: ubuntu-latest
