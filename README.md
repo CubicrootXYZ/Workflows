@@ -28,7 +28,7 @@ To ensure code quality use the provided `golang_quality` workflow. It runs multi
 ```yaml
 jobs:
   golang_quality:
-    uses: ./.github/workflows/golang_quality.yaml
+    uses: CubicrootXYZ/Workflows/.github/workflows/golang_quality.yaml@v1.0.0
     with:
       workdir: "golang/application/subfolder"
 ```
