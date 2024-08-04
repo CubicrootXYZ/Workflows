@@ -1,5 +1,10 @@
 on:
   workflow_call:
+    inputs:
+      workdir:
+        required: false
+        default: "./"
+        type: string
 
 jobs:
   golangci:
@@ -14,3 +19,4 @@ jobs:
         uses: golangci/golangci-lint-action@v6
         with:
           version: v1.59
+          working-directory: "${{ inputs.workdir }}"
