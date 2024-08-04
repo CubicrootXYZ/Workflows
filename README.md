@@ -18,3 +18,17 @@ jobs:
       dockerhub_user: ${{ secrets.DOCKERHUB_USERNAME }}
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
 ```
+
+## Golang
+
+### Code Quality
+
+To ensure code quality use the provided `golang_quality` workflow. It runs multiple analysis tools.
+
+```yaml
+jobs:
+  golang_quality:
+    uses: ./.github/workflows/golang_quality.yaml
+    with:
+      workdir: "golang/application/subfolder"
+```
