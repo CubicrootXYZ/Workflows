@@ -37,3 +37,17 @@ jobs:
     with:
       workdir: "golang/application/subfolder"
 ```
+
+### Execute Tests
+
+To execute golang tests use the provided `golang_test` workflow.
+
+```yaml
+jobs:
+  golang_test:
+    uses: ./.github/workflows/golang_test.yaml
+    with:
+      workdir: "tests/golang_test"
+      env: '{"DB_HOST": "localhost", "DB_PORT": "3306"}'
+      needs: '["build_documentation"]'
+```
