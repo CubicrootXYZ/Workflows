@@ -23,7 +23,7 @@ env:
 
 jobs:
   test:
-    needs: ${{ fromJSON($NEEDS) }}
+    needs: []
     runs-on: ubuntu-latest
     if: "!startsWith(github.ref, 'refs/tags/')"
     container:
