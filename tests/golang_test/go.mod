@@ -1,3 +1,3 @@
-module golang_test
+module golangtest
 
 go 1.22.5

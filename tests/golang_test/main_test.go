@@ -1,7 +1,7 @@
 package golangtest_test
 
 import (
-	golangtest "golang_test"
+	"golangtest"
 	"testing"
 )
 
