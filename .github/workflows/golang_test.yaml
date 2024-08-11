@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     if: "!startsWith(github.ref, 'refs/tags/')"
     container:
-      image: golang:1.22.5-alpine3.20
+      image: cubicrootxyz/golang-ci:v1.22.5-3
       options: --user root
     services: ${{ fromJSON(inputs.services) }}
     env: ${{ fromJSON(inputs.env) }}
