@@ -16,7 +16,6 @@ on:
 
 jobs:
   test:
-    needs: []
     runs-on: ubuntu-latest
     if: "!startsWith(github.ref, 'refs/tags/')"
     container:
