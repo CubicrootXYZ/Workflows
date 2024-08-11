@@ -48,6 +48,6 @@ jobs:
     uses: ./.github/workflows/golang_test.yaml
     with:
       workdir: "tests/golang_test/"
-      env: '{"DB_HOST": "localhost", "DB_PORT": "3306"}'
-      needs: '["build_documentation"]'
+      services: '{"database": {"image": "mysql:8.0", "ports": ["3306:3306"]}}'
+      env: '{"TESTENV": "value"}'
 ```
