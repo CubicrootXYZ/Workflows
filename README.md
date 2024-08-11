@@ -26,6 +26,11 @@ jobs:
 To ensure code quality use the provided `golang_quality` workflow. It runs multiple analysis tools.
 
 ```yaml
+permissions:
+  # Required by golangci job to write annotations to the merge request.
+  contents: read
+  checks: write
+  
 jobs:
   golang_quality:
     uses: CubicrootXYZ/Workflows/.github/workflows/golang_quality.yaml@v1.0.0

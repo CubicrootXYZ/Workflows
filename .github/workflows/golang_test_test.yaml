@@ -1,0 +1,7 @@
+on: push
+
+jobs:
+  golang_test:
+    uses: ./.github/workflows/golang_test.yaml
+    with:
+      workdir: "tests/golang_test"
