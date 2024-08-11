@@ -35,7 +35,7 @@ jobs:
   golang_quality:
     uses: CubicrootXYZ/Workflows/.github/workflows/golang_quality.yaml@v1.0.0
     with:
-      workdir: "golang/application/subfolder"
+      workdir: "golang/application/subfolder/"
 ```
 
 ### Execute Tests
@@ -47,7 +47,7 @@ jobs:
   golang_test:
     uses: ./.github/workflows/golang_test.yaml
     with:
-      workdir: "tests/golang_test"
+      workdir: "tests/golang_test/"
       env: '{"DB_HOST": "localhost", "DB_PORT": "3306"}'
       needs: '["build_documentation"]'
 ```
