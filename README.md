@@ -26,9 +26,28 @@ jobs:
 To ensure code quality use the provided `golang_quality` workflow. It runs multiple analysis tools.
 
 ```yaml
+permissions:
+  # Required by golangci job to write annotations to the merge request.
+  contents: read
+  checks: write
+  
 jobs:
   golang_quality:
     uses: CubicrootXYZ/Workflows/.github/workflows/golang_quality.yaml@v1.0.0
     with:
-      workdir: "golang/application/subfolder"
+      workdir: "golang/application/subfolder/"
+```
+
+### Execute Tests
+
+To execute golang tests use the provided `golang_test` workflow.
+
+```yaml
+jobs:
+  golang_test:
+    uses: ./.github/workflows/golang_test.yaml
+    with:
+      workdir: "tests/golang_test/"
+      services: '{"database": {"image": "mysql:8.0", "ports": ["3306:3306"]}}'
+      env: '{"TESTENV": "value"}'
 ```

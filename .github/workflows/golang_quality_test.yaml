@@ -9,4 +9,4 @@ jobs:
   golang_quality:
     uses: ./.github/workflows/golang_quality.yaml
     with:
-      workdir: "tests/golang_quality"
+      workdir: "tests/golang_quality/"
