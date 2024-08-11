@@ -20,18 +20,18 @@ on:
 
 jobs:
   test:
-    needs: ${{ fromJSON(inputs.needs) }}
+    needs: ${{ fromJSON(github.event.inputs.needs) }}
     runs-on: ubuntu-latest
     if: "!startsWith(github.ref, 'refs/tags/')"
     container:
       image: golang:1.22.5-alpine3.20
       options: --user root
-    services: ${{ fromJSON(inputs.services) }}
-    env: ${{ fromJSON(inputs.env) }}
+    services: ${{ fromJSON(github.event.inputs.services) }}
+    env: ${{ fromJSON(github.event.inputs.env) }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
       - name: Run tests
-        run: go test -cover -race ./...
+        run: go test -cover -race ${{ inputs.workdir }}...
