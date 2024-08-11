@@ -18,16 +18,19 @@ on:
         type: string
         default: '{}'
 
+env:
+  NEEDS: ${{ github.event.inputs.needs }}
+
 jobs:
   test:
-    needs: ${{ fromJSON(github.event.inputs.needs) }}
+    needs: ${{ fromJSON($NEEDS) }}
     runs-on: ubuntu-latest
     if: "!startsWith(github.ref, 'refs/tags/')"
     container:
       image: golang:1.22.5-alpine3.20
       options: --user root
-    services: ${{ fromJSON(github.event.inputs.services) }}
-    env: ${{ fromJSON(github.event.inputs.env) }}
+    services: ${{ fromJSON(inputs.services) }}
+    env: ${{ fromJSON(inputs.env) }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3
