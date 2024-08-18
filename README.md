@@ -45,7 +45,7 @@ To execute golang tests use the provided `golang_test` workflow.
 ```yaml
 jobs:
   golang_test:
-    uses: ./.github/workflows/golang_test.yaml
+    uses: CubicrootXYZ/Workflows/.github/workflows/golang_test.yaml@v1.0.0
     with:
       workdir: "tests/golang_test/"
       services: '{"database": {"image": "mysql:8.0", "ports": ["3306:3306"]}}'
