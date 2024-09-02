@@ -1,0 +1,7 @@
+on: push
+
+jobs:
+  jinja:
+    uses: ./.github/workflows/jinja.yaml
+    with:
+      workdir: "tests/jinja/" 
