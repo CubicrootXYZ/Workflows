@@ -1,0 +1,3 @@
+[makejinja]
+inputs = ["./templates"]
+output = "./generated"

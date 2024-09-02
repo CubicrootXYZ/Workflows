@@ -51,3 +51,17 @@ jobs:
       services: '{"database": {"image": "mysql:8.0", "ports": ["3306:3306"]}}'
       env: '{"TESTENV": "value"}'
 ```
+
+## Jinja
+
+### Validate generates are up to date
+
+Add the following job to your CI to ensure `jinja` generated files are always up to date. Uses `makejinja` for templating.
+
+```yaml
+jobs:
+  jinja:
+    uses: CubicrootXYZ/Workflows/.github/workflows/jinja.yaml@v1.0.0
+    with:
+      workdir: "tests/jinja/"
+```

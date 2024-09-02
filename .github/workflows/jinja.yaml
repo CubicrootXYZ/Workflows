@@ -1,0 +1,25 @@
+on:
+  workflow_call:
+    inputs:
+      workdir:
+        required: false
+        default: "./"
+        type: string
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    if: "!startsWith(github.ref, 'refs/tags/')"
+    container:
+      image: cubicrootxyz/jinja:v0.0.3
+      options: --user root
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: Run tests
+        run: (cd ${{ inputs.workdir }} && makejinja)
+      - name: Check for diffs
+        run: git diff --exit-code
