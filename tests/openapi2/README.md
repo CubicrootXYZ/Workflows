@@ -1,0 +1,1 @@
+Petstore is licensed under [Apache](https://github.com/OAI/OpenAPI-Specification/blob/main/LICENSE).
