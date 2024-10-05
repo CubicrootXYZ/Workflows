@@ -1,0 +1,20 @@
+on: push
+
+jobs:
+  openapi2_render_test_prep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v3
+      - uses: actions/upload-artifact@master
+        with:
+          name: spec
+          path: tests/openapi2/
+  openapi2_render_test:
+    needs: 
+      - openapi2_render_test_prep
+    uses: ./.github/workflows/openapi2_render.yaml
+    with:
+      spec_artifact_name: spec
+      spec_artifact_path: tests/openapi2/
+      spec_filename: petstore.yaml

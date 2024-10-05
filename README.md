@@ -65,3 +65,19 @@ jobs:
     with:
       workdir: "tests/jinja/"
 ```
+
+## OpenAPI
+
+### Render OpenAPI 2 specs with redoc
+
+Render an OpenAPI 2 spec with `redoc`. The spec file needs to be present in the given artifact. The rendered `index.html` will be added to the artifact `rendered-api-docu`.
+
+```yaml
+jobs:
+  render:
+    uses: CubicrootXYZ/Workflows/.github/workflows/openapi2_render.yaml
+    with:
+      spec_artifact_name: spec
+      spec_artifact_path: tests/openapi2/
+      spec_filename: petstore.yaml
+```
