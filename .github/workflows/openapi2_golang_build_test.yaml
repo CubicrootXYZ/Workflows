@@ -1,0 +1,8 @@
+on: push
+
+jobs:
+  openapi2_golang_build_test:
+    uses: ./.github/workflows/openapi2_golang_build.yaml
+    with:
+      entrypoint: tests/openapi2/main.go
+      workdir: tests/openapi2/
