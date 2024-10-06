@@ -1,0 +1,39 @@
+on: 
+  workflow_call:
+    inputs:
+      entrypoint:
+        required: false
+        type: string
+        default: "main.go"
+      workdir:
+        required: false
+        type: string
+        default: "./"
+
+jobs:
+  build_with_swagger:
+    runs-on: ubuntu-latest
+    if: "!startsWith(github.ref, 'refs/tags/')"
+    container:
+      image: cubicrootxyz/golang-ci:v1.23.0
+      options: --user root
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "14"
+      - name: Get dependencies
+        run: (cd ${{ inputs.workdir }} && go get ./...)
+      - name: Make docs folder
+        run: mkdir -p docs
+      - name: Build the api documentation
+        run: swag init --parseDependency=true -d . -g ${{ inputs.entrypoint }}
+      - name: Archive OpenAPI spec
+        uses: actions/upload-artifact@v4
+        with:
+          name: openapi-spec
+          path: |
+            docs/
