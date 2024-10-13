@@ -75,7 +75,7 @@ Render an OpenAPI 2 spec with `redoc`. The spec file needs to be present in the 
 ```yaml
 jobs:
   render:
-    uses: CubicrootXYZ/Workflows/.github/workflows/openapi2_render.yaml
+    uses: CubicrootXYZ/Workflows/.github/workflows/openapi2_render.yaml@v1.0.0
     with:
       spec_artifact_name: spec
       spec_artifact_path: tests/openapi2/
@@ -89,7 +89,7 @@ Generate OpenAPI 2 spec file based on `swag` compatible annotiations in the sour
 ```yaml
 jobs:
   build:
-    uses: ./.github/workflows/openapi2_golang_build.yaml
+    uses: CubicrootXYZ/Workflows/.github/workflows/openapi2_golang_build.yaml@v1.0.0
     with:
       entrypoint: cmd/main.go
       workdir: ./
