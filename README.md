@@ -81,3 +81,16 @@ jobs:
       spec_artifact_path: tests/openapi2/
       spec_filename: petstore.yaml
 ```
+
+### Generate OpenAPI 2 spec from golang source code
+
+Generate OpenAPI 2 spec file based on `swag` compatible annotiations in the source code.
+
+```yaml
+jobs:
+  build:
+    uses: ./.github/workflows/openapi2_golang_build.yaml
+    with:
+      entrypoint: cmd/main.go
+      workdir: ./
+```
