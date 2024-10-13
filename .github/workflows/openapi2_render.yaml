@@ -37,3 +37,9 @@ jobs:
           name: rendered-api-docu
           path: |
             index.html
+      - name: Upload HTML file as pages artifact
+        id: openapi-html
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: |
+            index.html
