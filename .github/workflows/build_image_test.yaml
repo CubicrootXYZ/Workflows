@@ -1,0 +1,12 @@
+on: push
+
+jobs:
+  build_image_test:
+    uses: ./.github/workflows/build_image.yaml
+    with:
+      docker_file_path: "tests/build_image/"
+      image_name: cubicrootxyz/workflows-test
+      static_tag: beta
+    secrets:
+      dockerhub_user: "${{ secrets.DOCKERHUB_USERNAME }}"
+      dockerhub_token: "${{ secrets.DOCKERHUB_TOKEN }}"

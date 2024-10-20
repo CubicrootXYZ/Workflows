@@ -6,6 +6,8 @@ Collection of commonly used GitHub workflows.
 
 This workflow will build and push images to Dockerhub. For any change an image with the commit SHA as tag will be published. For releases the release tag will be used to tag the image.
 
+Provide a `static_tag` so any commit on `main` branch will result in an image pushed with that tag. Can be used to provide a `beta` or `main` tagged image.
+
 ```yaml
 jobs:
   build_image:
