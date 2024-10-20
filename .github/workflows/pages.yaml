@@ -1,10 +1,10 @@
 on: 
   workflow_call:
     inputs:
-      spec_artifact_name:
+      artifact_name:
         required: true
         type: string
-      spec_artifact_path:
+      artifact_path:
         required: true
         type: string
 
@@ -18,8 +18,8 @@ jobs:
     steps:
       - uses: actions/download-artifact@master
         with:
-          name: "{{ inputs.spec_artifact_name }}"
-          path: "{{ inputs.spec_artifact_path }}"
+          name: "{{ inputs.artifact_name }}"
+          path: "{{ inputs.artifact_path }}"
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

@@ -94,3 +94,27 @@ jobs:
       entrypoint: cmd/main.go
       workdir: ./
 ```
+
+## GitHub Pages
+
+Make sure GitHub pages are activated and set to "GitHub Action" in your repository settings.
+
+Add the following permissions to the `workflows` file:
+
+```yaml
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+```
+
+To deploy an artifact to GitHub pages use the following job:
+
+```yaml
+jobs:
+  pages_test:
+    uses: CubicrootXYZ/Workflows/.github/workflows/pages.yaml
+    with:
+      artifact_name: static-html
+      artifact_path: index.html
+```

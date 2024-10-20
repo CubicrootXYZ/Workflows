@@ -1,5 +1,10 @@
 on: push
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   pages_test_prep:
     runs-on: ubuntu-latest
@@ -15,5 +20,5 @@ jobs:
       - pages_test_prep
     uses: ./.github/workflows/pages.yaml
     with:
-      spec_artifact_name: static-html
-      spec_artifact_path: tests/pages/index.html
+      artifact_name: static-html
+      artifact_path: tests/pages/index.html
