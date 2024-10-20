@@ -18,8 +18,8 @@ jobs:
     steps:
       - uses: actions/download-artifact@master
         with:
-          name: "{{ inputs.artifact_name }}"
-          path: "{{ inputs.artifact_path }}"
+          name: "${{ inputs.artifact_name }}"
+          path: "${{ inputs.artifact_path }}"
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
