@@ -1,0 +1,19 @@
+on: push
+
+jobs:
+  pages_test_prep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v3
+      - uses: actions/upload-artifact@master
+        with:
+          name: static-html
+          path: tests/pages/index.html
+  pages_test:
+    needs: 
+      - pages_test_prep
+    uses: ./.github/workflows/pages.yaml
+    with:
+      spec_artifact_name: static-html
+      spec_artifact_path: tests/pages/index.html

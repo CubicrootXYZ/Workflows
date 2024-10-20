@@ -10,18 +10,22 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
     if: "${{ github.ref == 'refs/heads/main' }}"
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@master
         with:
-          name: ${{ inputs.spec_artifact_name }}
-          path: ${{ inputs.spec_artifact_path }}
-      - name: Upload HTML file as pages artifact
-        id: deployment
+          name: "{{ inputs.spec_artifact_name }}"
+          path: "{{ inputs.spec_artifact_path }}"
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ inputs.spec_artifact_path }}
+          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
