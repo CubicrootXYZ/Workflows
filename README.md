@@ -120,3 +120,17 @@ jobs:
       artifact_name: static-html
       artifact_path: index.html
 ```
+
+## Renovate
+
+Create a new access token and set it as `RENOVATE_TOKEN` repo secret. 
+
+```yaml
+jobs:
+  renovate_test:
+    uses: ./.github/workflows/renovate.yaml
+    with:
+      author: "Max <max@users.noreply.github.com>"
+    secrets:
+      token: "${{ secrets.RENOVATE_TOKEN }}"
+```
