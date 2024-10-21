@@ -1,0 +1,7 @@
+on: push
+
+jobs:
+  renovate_test:
+    uses: ./.github/workflows/renovate.yaml
+    secrets:
+      token: "${{ secrets.RENOVATE_TOKEN }}"
