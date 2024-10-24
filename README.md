@@ -115,7 +115,7 @@ To deploy an artifact to GitHub pages use the following job:
 ```yaml
 jobs:
   pages_test:
-    uses: CubicrootXYZ/Workflows/.github/workflows/pages.yaml
+    uses: CubicrootXYZ/Workflows/.github/workflows/pages.yaml@v1.0.0
     with:
       artifact_name: static-html
       artifact_path: index.html
@@ -128,7 +128,7 @@ Create a new access token and set it as `RENOVATE_TOKEN` repo secret.
 ```yaml
 jobs:
   renovate_test:
-    uses: ./.github/workflows/renovate.yaml
+    uses: CubicrootXYZ/Workflows/.github/workflows/workflows/renovate.yaml@v1.0.0
     with:
       author: "Max <max@users.noreply.github.com>"
     secrets:
