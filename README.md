@@ -16,6 +16,7 @@ jobs:
       docker_build_args: "--no-cache"
       docker_file_path: "./"
       image_name: "example/image"
+      vuln_scan: false # Uses grype to scan for vulnerabilities. 
     secrets:
       dockerhub_user: ${{ secrets.DOCKERHUB_USERNAME }}
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
