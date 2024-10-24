@@ -15,6 +15,10 @@ on:
         required: false
         type: string
         default: ""
+      vuln_scan:
+        required: false
+        type: boolean
+        default: false
     secrets:
       dockerhub_user:
         required: true
@@ -29,6 +33,13 @@ jobs:
         uses: actions/checkout@v2
       - name: Build the image
         run: docker build -t ${{ inputs.image_name }}:${{ github.sha }} --build-arg VERSION=${{ github.ref_name }} ${{ inputs.docker_build_args }} ${{ inputs.docker_file_path }}
+      - name: Scan image for vulnerabilities
+        uses: anchore/scan-action@v3
+        with:
+          image: "${{ inputs.image_name }}:${{ github.sha }}"
+          fail-build: true
+          severity-cutoff: "high"
+          cache-db: true
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
