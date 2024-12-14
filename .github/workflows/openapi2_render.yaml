@@ -14,7 +14,6 @@ on:
 jobs:
   render_with_redoc:
     runs-on: ubuntu-latest
-    if: "!startsWith(github.ref, 'refs/tags/')"
     container:
       image: cubicrootxyz/golang-ci:v1.23.3
       options: --user root
