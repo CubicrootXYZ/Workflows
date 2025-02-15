@@ -18,16 +18,16 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: v1.23.5
+          go-version: v1.24.0
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
-          version: v1.60
+          version: v1.64
           working-directory: "${{ inputs.workdir }}"
   go_tidy:
     runs-on: ubuntu-latest
     container:
-      image: cubicrootxyz/golang-ci:v1.23.5
+      image: cubicrootxyz/golang-ci:v1.24.0
       options: --user root
     steps:
       - uses: actions/checkout@v4
@@ -39,7 +39,7 @@ jobs:
   go_generate:
     runs-on: ubuntu-latest
     container:
-      image: cubicrootxyz/golang-ci:v1.23.5
+      image: cubicrootxyz/golang-ci:v1.24.0
       options: --user root
     steps:
       - uses: actions/checkout@v4
