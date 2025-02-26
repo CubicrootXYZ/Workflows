@@ -19,7 +19,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
       - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
-      - name: Run tests
-        run: (cd ${{ inputs.workdir }} && makejinja)
+      - name: Execute zemplating
+        run: (cd ${{ inputs.workdir }} && makejinja --force)
       - name: Check for diffs
         run: git diff --exit-code
