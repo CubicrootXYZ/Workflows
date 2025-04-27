@@ -14,7 +14,7 @@ jobs:
   build_with_swagger:
     runs-on: ubuntu-latest
     container:
-      image: cubicrootxyz/golang-ci:v1.24.0
+      image: cubicrootxyz/golang-ci:v1.24.2
       options: --user root
     steps:
       - name: Checkout the repository
