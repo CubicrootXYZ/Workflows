@@ -18,7 +18,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: cubicrootxyz/golang-ci:v1.24.2
+      image: cubicrootxyz/golang-ci:v1.25.0
       options: --user root
     services: ${{ fromJSON(inputs.services) }}
     env: ${{ fromJSON(inputs.env) }}
