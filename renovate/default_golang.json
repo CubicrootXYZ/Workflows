@@ -3,7 +3,6 @@
     "extends": [
         "config:recommended",
         ":semanticCommits",
-        "docker:pinDigests",
         ":automergePatch",
         ":docker",
         ":gomod",
