@@ -27,7 +27,7 @@ jobs:
   go_tidy:
     runs-on: ubuntu-latest
     container:
-      image: cubicrootxyz/golang-ci:v1.25.0
+      image: cubicrootxyz/golang-ci:v1.25.4
       options: --user root
     steps:
       - uses: actions/checkout@v4
@@ -39,7 +39,7 @@ jobs:
   go_generate:
     runs-on: ubuntu-latest
     container:
-      image: cubicrootxyz/golang-ci:v1.25.0
+      image: cubicrootxyz/golang-ci:v1.25.4
       options: --user root
     steps:
       - uses: actions/checkout@v4
