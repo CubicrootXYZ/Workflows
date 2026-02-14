@@ -15,7 +15,7 @@ jobs:
   render_with_redoc:
     runs-on: ubuntu-latest
     container:
-      image: cubicrootxyz/golang-ci:v1.25.5
+      image: cubicrootxyz/golang-ci:v1.26.0
       options: --user root
     steps:
       - uses: actions/download-artifact@master
