@@ -14,7 +14,7 @@ jobs:
   build_with_swagger:
     runs-on: ubuntu-latest
     container:
-      image: cubicrootxyz/golang-ci:v1.26.2
+      image: cubicrootxyz/golang-ci:v1.26.4
       options: --user root
     steps:
       - name: Checkout the repository
@@ -29,7 +29,7 @@ jobs:
       - name: Make docs folder
         run: mkdir -p docs
       - name: Build the api documentation
-        run: swag init --parseDependency=true -d . -g ${{ inputs.entrypoint }}
+        run: swag init -v3.1 --parseDependency=true -d . -g ${{ inputs.entrypoint }}
       - name: Archive OpenAPI spec
         uses: actions/upload-artifact@v4
         with:
