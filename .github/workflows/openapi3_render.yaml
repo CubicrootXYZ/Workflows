@@ -15,7 +15,7 @@ jobs:
   render_with_redoc:
     runs-on: ubuntu-latest
     container:
-      image: cubicrootxyz/golang-ci:v1.26.2
+      image: cubicrootxyz/golang-ci:v1.26.4
       options: --user root
     steps:
       - uses: actions/download-artifact@master
@@ -24,10 +24,8 @@ jobs:
           path: ${{ inputs.spec_artifact_path }}
       - name: Make docs folder
         run: mkdir -p docs
-      - name: Convert to OpenApi 3
-        run: openapi-code-sample-generator convert --file ${{ inputs.spec_artifact_path }}${{ inputs.spec_filename }} --output-file docs/openapi3_spec.yaml
       - name: Add code samples to api documentation
-        run: openapi-code-sample-generator generate --input-file docs/openapi3_spec.yaml --output-file docs/enriched_openapi3_spec.yaml
+        run: openapi-code-sample-generator generate --input-file ${{ inputs.spec_artifact_path }}${{ inputs.spec_filename }} --output-file docs/enriched_openapi3_spec.yaml
       - name: Build static html
         run: npx redoc-cli bundle docs/enriched_openapi3_spec.yaml --output index.html
       - name: Archive rendered HTML
