@@ -1,0 +1,17 @@
+{
+    "description": "Default Preset for Ansible Repos",
+    "extends": [
+        "config:recommended",
+        ":semanticCommits",
+        ":docker",
+        "docker:enableMajor",
+        ":pinVersions"
+    ],
+    "baseBranches": [
+        "main"
+    ],
+    "rebaseWhen": "conflicted",
+    "labels": [
+        "dependencies"
+    ]
+}
