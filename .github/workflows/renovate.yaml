@@ -5,6 +5,10 @@ on:
         required: false
         type: string
         default: "Renovate <renovate@users.noreply.github.com>"
+      log_level:
+        required: false
+        type: string
+        default: "info"
     secrets:
       token:
         required: true
@@ -24,3 +28,5 @@ jobs:
           RENOVATE_AUTOMERGE: "false"
           RENOVATE_ONBOARDING: "false"
           RENOVATE_GIT_AUTHOR: "${{ inputs.author }}"
+          RENOVATE_LOG_LEVEL: "${{ inputs.log_level }}"
+          LOG_LEVEL: "${{ inputs.log_level }}"
